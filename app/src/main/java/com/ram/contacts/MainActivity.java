@@ -17,7 +17,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
-import java.io.Console;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -82,8 +81,8 @@ public class MainActivity extends AppCompatActivity {
                         for (int i = 0; i < contacts.length(); i++) {
                             String name = contacts.getJSONObject(i).get("name").toString();
                             String email = contacts.getJSONObject(i).get("email").toString();
-                            Contact mContact = new Contact(name, email);
-                            mContactList.add(mContact);
+                            //Contact mContact = new Contact(name, email);//TODO remove
+                            //mContactList.add(mContact);//TODO remove
                         }
                     } catch (Exception e) {
 

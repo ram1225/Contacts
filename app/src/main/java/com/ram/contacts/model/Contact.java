@@ -4,18 +4,29 @@ package com.ram.contacts.model;
  * Created by Vijay on 11/04/17.
  */
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class Contact {
 
+    @SerializedName("id")
+    @Expose
     private String id;
+    @SerializedName("name")
+    @Expose
     private String name;
+    @SerializedName("email")
+    @Expose
     private String email;
+    @SerializedName("address")
+    @Expose
     private String address;
+    @SerializedName("gender")
+    @Expose
     private String gender;
-
-    public Contact(String name, String email) {
-        this.name = name;
-        this.email = email;
-    }
+    @SerializedName("phone")
+    @Expose
+    private Phone phone;
 
     public String getId() {
         return id;
@@ -57,7 +68,12 @@ public class Contact {
         this.gender = gender;
     }
 
+    public Phone getPhone() {
+        return phone;
+    }
 
-
+    public void setPhone(Phone phone) {
+        this.phone = phone;
+    }
 
 }
