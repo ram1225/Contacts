@@ -1,7 +1,6 @@
 package com.ram.contacts;
 
-import android.app.ProgressDialog;
-import android.os.AsyncTask;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -9,8 +8,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.ram.contacts.adapters.ContactsAdapter;
-import com.ram.contacts.model.Contact;
-import com.ram.contacts.model.ContactsList;
+import com.ram.contacts.models.ContactsItem;
+import com.ram.contacts.models.ContactsList;
 import com.ram.contacts.webservice.ApiCall;
 
 import java.util.ArrayList;
@@ -24,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
     private RecyclerView mContactsRecyclerView;
     private ContactsAdapter mContactsAdapter;
-    private List<Contact> mContactList = new ArrayList<>();
+    private List<ContactsItem> mContactList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         call.enqueue(new Callback<ContactsList>() {
             @Override
             public void onResponse(Call<ContactsList> call, Response<ContactsList> response) {
-                mContactsAdapter.setData(response.body().getContacts());
+                mContactsAdapter.setData(response.body().contacts());
             }
 
             @Override

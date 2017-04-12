@@ -1,6 +1,7 @@
 package com.ram.contacts.webservice;
 
-import com.ram.contacts.model.ContactsList;
+import com.google.gson.GsonBuilder;
+import com.ram.contacts.models.ContactsList;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -20,13 +21,20 @@ public interface ApiCall {
 
 
     //Retrofit
+
+    //HTTP Client
     OkHttpClient.Builder builder = new OkHttpClient.Builder().addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY));
     OkHttpClient httpClient = builder.build();
+
+    //AutoValue
+    GsonConverterFactory autoValueGSONConvertor = GsonConverterFactory.create(
+            new GsonBuilder().registerTypeAdapterFactory(AutoValueGsonFactory.create())
+            .create());
 
     Retrofit retrofit = new Retrofit.Builder()
             .baseUrl("http://api.androidhive.info/")
             .client(httpClient)
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(autoValueGSONConvertor)//GsonConverterFactory.create()
             .build();
 
 }

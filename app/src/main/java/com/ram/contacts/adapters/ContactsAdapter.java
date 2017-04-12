@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.ram.contacts.R;
-import com.ram.contacts.model.Contact;
+import com.ram.contacts.models.ContactsItem;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ import java.util.List;
 
 public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.MyViewHolder> {
 
-    private List<Contact> mContactsList;
+    private List<ContactsItem> mContactsList;
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -28,11 +28,11 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.MyView
     }
 
 
-    public ContactsAdapter(List<Contact> mContactsList) {
+    public ContactsAdapter(List<ContactsItem> mContactsList) {
         this.mContactsList = mContactsList;
     }
 
-    public void setData(List<Contact> mContactsList) {
+    public void setData(List<ContactsItem> mContactsList) {
         this.mContactsList = mContactsList;
         notifyDataSetChanged();
     }
@@ -40,9 +40,9 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.MyView
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
 
-        Contact contact = mContactsList.get(position);
-        holder.name.setText(contact.getName());
-        holder.email.setText(contact.getEmail());
+        ContactsItem contact = mContactsList.get(position);
+        holder.name.setText(contact.name());
+        holder.email.setText(contact.email());
 
     }
 
