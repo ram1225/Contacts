@@ -32,10 +32,10 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.MyView
         this.mContactsList = mContactsList;
     }
 
-    /*public void setData(List<Contact> mContactsList) {
+    public void setData(List<Contact> mContactsList) {
         this.mContactsList = mContactsList;
         notifyDataSetChanged();
-    }*/
+    }
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {

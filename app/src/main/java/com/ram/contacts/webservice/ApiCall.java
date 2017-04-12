@@ -1,6 +1,7 @@
 package com.ram.contacts.webservice;
 
 import com.ram.contacts.model.Contact;
+import com.ram.contacts.model.ContactsList;
 
 import java.util.List;
 
@@ -21,16 +22,16 @@ public interface ApiCall {
     // Relative path : contacts
 
     @GET("contacts/")
-    Call<List<Contact>> getContacts();
+    Call<ContactsList> getContacts();
 
     //Retrofit
-    HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY);
+    //HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY);
 
-    OkHttpClient okHttpClient = new OkHttpClient.Builder().addInterceptor(httpLoggingInterceptor).build();
+    //OkHttpClient okHttpClient = new OkHttpClient.Builder().addInterceptor(httpLoggingInterceptor).build();
 
     public static final Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl("https://api.github.com/")
-            .addConverterFactory(GsonConverterFactory.create()).client(okHttpClient)
+            .baseUrl("http://api.androidhive.info/")
+            .addConverterFactory(GsonConverterFactory.create())
             .build();
 
 }
