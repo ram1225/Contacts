@@ -22,7 +22,7 @@ public interface ApiCall {
 
     //Retrofit
 
-    //HTTP Client
+    //HTTP Client - OKHTTP 3
     OkHttpClient.Builder builder = new OkHttpClient.Builder().addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY));
     OkHttpClient httpClient = builder.build();
 

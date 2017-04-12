@@ -1,11 +1,11 @@
 package com.ram.contacts;
 
-
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+
 
 import com.ram.contacts.adapters.ContactsAdapter;
 import com.ram.contacts.models.ContactsItem;
@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
         ApiCall apiCall = ApiCall.retrofit.create(ApiCall.class);
         Call<ContactsList> call = apiCall.getContacts();
+
         call.enqueue(new Callback<ContactsList>() {
             @Override
             public void onResponse(Call<ContactsList> call, Response<ContactsList> response) {
@@ -58,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
+
     }
 
 }
