@@ -1,9 +1,6 @@
 package com.ram.contacts.webservice;
 
-import com.ram.contacts.model.Contact;
 import com.ram.contacts.model.ContactsList;
-
-import java.util.List;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -18,23 +15,18 @@ import retrofit2.http.GET;
 
 public interface ApiCall {
 
-    //Base : http://api.androidhive.info/
-    // Relative path : contacts
-
     @GET("contacts/")
     Call<ContactsList> getContacts();
 
+
     //Retrofit
-    //HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY);
+    OkHttpClient.Builder builder = new OkHttpClient.Builder().addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY));
+    OkHttpClient httpClient = builder.build();
 
-    //OkHttpClient okHttpClient = new OkHttpClient.Builder().addInterceptor(httpLoggingInterceptor).build();
-
-    public static final Retrofit retrofit = new Retrofit.Builder()
+    Retrofit retrofit = new Retrofit.Builder()
             .baseUrl("http://api.androidhive.info/")
+            .client(httpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build();
 
 }
-
-
-//https://github.com/shelajev/Retrofit2SampleApp/tree/master/app/src/main/java/zeroturnaround/org/jrebel4androidgettingstarted/service
